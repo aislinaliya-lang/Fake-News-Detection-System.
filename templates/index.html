@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Fake News Detection System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            Fake News Detector
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#working">How It Works</a>
+        </nav>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main id="home">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="intro">
+
+            <p class="small-title">
+                ARTIFICIAL INTELLIGENCE PROJECT
+            </p>
+
+            <h1>
+                Fake News
+                <br>
+                Detection System
+            </h1>
+
+            <p class="intro-text">
+
+                Enter a news headline, sentence, or claim
+                and let our machine learning model analyze
+                it and provide an AI-based prediction.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- DETECTOR -->
+
+        <section class="detector">
+
+            <h2>
+                Check a News Statement
+            </h2>
+
+            <p class="instruction">
+
+                Enter a headline or sentence below.
+
+            </p>
+
+
+            <form method="POST">
+
+
+                <textarea
+                    name="news_text"
+                    placeholder="Example: Scientists discover a new species of bird..."
+                    required>{{ text }}</textarea>
+
+
+                <button type="submit">
+
+                    Analyze Statement
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- RESULT -->
+
+            {% if prediction %}
+
+            <div class="result">
+
+                <p class="result-label">
+                    AI PREDICTION
+                </p>
+
+
+                {% if prediction == "REAL" %}
+
+                    <h3 class="real">
+                        REAL
+                    </h3>
+
+                {% else %}
+
+                    <h3 class="fake">
+                        POSSIBLY FAKE
+                    </h3>
+
+                {% endif %}
+
+
+                <p class="confidence">
+
+                    Model confidence:
+                    <strong>{{ confidence }}%</strong>
+
+                </p>
+
+
+                <p class="warning">
+
+                    This prediction is based on patterns
+                    learned from the training dataset.
+                    It does not replace professional
+                    fact-checking.
+
+                </p>
+
+            </div>
+
+            {% endif %}
+
+
+        </section>
+
+
+
+        <!-- ABOUT -->
+
+        <section class="about" id="about">
+
+            <h2>
+                About the Project
+            </h2>
+
+            <p>
+
+                The Fake News Detection System is a basic
+                artificial intelligence project that uses
+                machine learning to classify news text.
+
+                The system learns patterns from a dataset
+                containing examples of real and fake news.
+                When new text is entered, the trained model
+                predicts which category it is more likely
+                to belong to.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- HOW IT WORKS -->
+
+        <section class="working" id="working">
+
+            <h2>
+                How It Works
+            </h2>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <span>01</span>
+
+                    <h3>
+                        Enter Text
+                    </h3>
+
+                    <p>
+                        The user enters a news headline,
+                        sentence, or claim.
+                    </p>
+
+                </div>
+
+
+
+                <div class="step">
+
+                    <span>02</span>
+
+                    <h3>
+                        Text Processing
+                    </h3>
+
+                    <p>
+                        TF-IDF converts the words into
+                        numerical features.
+                    </p>
+
+                </div>
+
+
+
+                <div class="step">
+
+                    <span>03</span>
+
+                    <h3>
+                        AI Analysis
+                    </h3>
+
+                    <p>
+                        Logistic Regression analyzes
+                        the learned patterns.
+                    </p>
+
+                </div>
+
+
+
+                <div class="step">
+
+                    <span>04</span>
+
+                    <h3>
+                        Prediction
+                    </h3>
+
+                    <p>
+                        The system displays REAL or
+                        POSSIBLY FAKE.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Fake News Detection System
+        </p>
+
+        <p>
+            Artificial Intelligence Project
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
